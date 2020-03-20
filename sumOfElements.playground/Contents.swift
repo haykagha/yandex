@@ -1,5 +1,6 @@
 import UIKit
 
+// Task1
 // Implementation of a function that takes one string element
 // in which two numbers are written and returns a string element
 // in which their sum is written.
@@ -29,6 +30,31 @@ func timeElapsedInSecondsWhenRunningCode(operation: ()->()) -> Double {
 }
 
 timeElapsedInSecondsWhenRunningCode(operation: sumOfElemnets)
+
+
+// Task2
+// Implementation of a function that takes one string element
+// in which two numbers a and b are written and returns a string element
+// in which counted а + b^2  is written.
+
+
+let stringNumbers2 = "10 25"
+
+let sumOfElemnets2 = {
+   let numbersArray = stringNumbers2.components(separatedBy: " ")
+    let sum: String
+    var sumOfNumbers: Int = 0
+        if let firstIntNumber = Int(numbersArray[0]), let secondIntNumber = Int(numbersArray[1]) {
+           sumOfNumbers = firstIntNumber + secondIntNumber * secondIntNumber
+        }
+    sum = String(sumOfNumbers)
+    print("sum of numbers is \(sum)")
+}
+
+timeElapsedInSecondsWhenRunningCode(operation: sumOfElemnets2)
+    
+
+
 
 
 
