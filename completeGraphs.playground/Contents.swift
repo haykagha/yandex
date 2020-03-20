@@ -1,13 +1,9 @@
 import UIKit
 
+// Division of personnel into two groups where in each group every two people know each other.
 
 // n - amount of workers
-let n = 7
-
-// m - number of acquaintances in the company
-var m = 0
-// mOfGroup - number of acquaintances in the group1
-
+let n = 8
 
 struct Contact: Equatable {
     var contacts: [Int]
@@ -22,14 +18,15 @@ struct Contact: Equatable {
 }
 
 var contact0 = Contact(contacts: [0,1,2,3,4])
-var contact1 = Contact(contacts: [0,2,3,4])
+var contact1 = Contact(contacts: [0,1,2,3,4])
 var contact2 = Contact(contacts: [0,1,2,3,4])
 var contact3 = Contact(contacts: [0,1,2,3,4])
 var contact4 = Contact(contacts: [0,1,2,3,4])
-var contact5 = Contact(contacts: [5,6])
-var contact6 = Contact(contacts: [5,6])
+var contact5 = Contact(contacts: [5,6,7])
+var contact6 = Contact(contacts: [5,6,7])
+var contact7 = Contact(contacts: [5,6,7])
 
-var arrayOfContacts: [Contact] = [contact0, contact1, contact2, contact3, contact4, contact5, contact6]
+var arrayOfContacts: [Contact] = [contact0, contact1, contact2, contact3, contact4, contact5, contact6, contact7]
 var group1 = [Contact]()
 var group2 = [Contact]()
 var number: Int = 0
