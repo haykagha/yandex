@@ -2,7 +2,7 @@ import UIKit
 
 
 // prime numbers to n
-let n : Int = 5939
+let n : Int = 5940
 
 func findingPrimeNumbers(number: Int) {
     var count: Int = 0
