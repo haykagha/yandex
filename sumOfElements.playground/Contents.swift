@@ -38,7 +38,7 @@ timeElapsedInSecondsWhenRunningCode(operation: sumOfElemnets)
 // in which counted а + b^2  is written.
 
 
-let stringNumbers2 = "10 25"
+let stringNumbers2 = "10 255"
 
 let sumOfElemnets2 = {
    let numbersArray = stringNumbers2.components(separatedBy: " ")
