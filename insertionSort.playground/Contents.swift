@@ -70,14 +70,14 @@ timeElapsedInSecondsWhenRunningCode {
     insertionSort(array: arrayOfNumbers1)
 }
 
-insertionSort(array: arrayOfNumbers1)
+//insertionSort(array: arrayOfNumbers1)
 
 // Sorting time of the second array
 timeElapsedInSecondsWhenRunningCode {
     insertionSort(array: arrayOfNumbers2)
 }
 
-insertionSort(array: arrayOfNumbers2)
+//insertionSort(array: arrayOfNumbers2)
 
 
 
