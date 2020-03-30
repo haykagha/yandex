@@ -2,7 +2,10 @@ import UIKit
 
 
 // Method of sort by fon Neiman
-var sortThisArray = [10,2,55,2,19,7,77,23]
+//[1,8,2,1,4,7,3,2,3,6] [10,2,3,8,6,1,3,2,1,11,2]
+var sortThisArray = [10,2,3,8,6,1,3,2,1,11,2]
+var inversionCount: Int = 0
+
 print("Sort array \(sortThisArray) by method fon Neiman\n")
 
 func merge(array1: [Int], array2: [Int]) -> [Int] {
@@ -13,21 +16,17 @@ func merge(array1: [Int], array2: [Int]) -> [Int] {
     var j: Int = 0
     while (i + j < n + m) {
         if (j == m) || ( i < n && array1[i] <= array2[j]) {
+            inversionCount += j
             sortedArray.append(array1[i])
             i += 1
         } else {
             sortedArray.append(array2[j])
             j += 1
         }
+        
     }
     return sortedArray
 }
-
-
-merge(array1: [1,2,3,4], array2: [7,7,8,9])
-
-
-
 
 func sortNeiman(array : [Int]) -> [Int] {
     let m = array.count
@@ -70,3 +69,7 @@ func runningTime(code: () -> ()) -> Double {
 runningTime {
     sortNeiman(array: sortThisArray)
 }
+
+// inversion count is
+print("\nInversion count is \(inversionCount)")
+
