@@ -7,7 +7,7 @@ import UIKit
 //[42, 12, 88, 62, 63, 56, 1, 77, 88, 97, 97, 20, 45, 91, 62, 2, 15, 31, 59, 5] [10,2,14,13,1,5,6,8,9,3]
 // [9,8,7,6,5,4,3,2,1]
 
-var sortThisArray = [1,2,3]
+var sortThisArray = [42, 12, 88, 62, 63, 56, 1, 77, 88, 97, 97, 20, 45, 91, 62, 2, 15, 31, 59, 5]
 let count = sortThisArray.count
 // This is a variable in order to calculate the number of comparisons and find the sequence of n numbers on which the program will work as much as possible
 var antiQuickSortCount: Int = 0
