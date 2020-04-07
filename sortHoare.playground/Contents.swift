@@ -4,10 +4,14 @@ import UIKit
 
 // array examples
 //[9,8,7,6,5,4,3,2,1]
-//[42, 12, 88, 62, 63, 56, 1, 77, 88, 97, 97, 20, 45, 91, 62, 2, 15, 31, 59, 5]
+//[42, 12, 88, 62, 63, 56, 1, 77, 88, 97, 97, 20, 45, 91, 62, 2, 15, 31, 59, 5] [10,2,14,13,1,5,6,8,9,3]
+// [9,8,7,6,5,4,3,2,1]
 
-var sortThisArray = [10,2,14,13,1,5,6,8,9,3]
+var sortThisArray = [1,2,3]
 let count = sortThisArray.count
+// This is a variable in order to calculate the number of comparisons and find the sequence of n numbers on which the program will work as much as possible
+var antiQuickSortCount: Int = 0
+var n: Int = 10
 
 // this func replace two elements in array
 func swap(left: Int, right: Int) {
@@ -32,11 +36,14 @@ func sortHoare(left: Int, right: Int) -> [Int] {
     pivotIndex = right
     
     while ( i <= j ) {
+         antiQuickSortCount += 1
         while (sortThisArray[i] < pivot) {
             i += 1
+            antiQuickSortCount += 1
         }
         while (sortThisArray[j] > pivot ) {
             j -= 1
+            antiQuickSortCount += 1
         }
         if i <= j {
             swap(left: i, right: j)
@@ -56,6 +63,6 @@ func sortHoare(left: Int, right: Int) -> [Int] {
 
 
 sortHoare(left: 0, right: count - 1)
-
+print("number of maximum comparisons is \(antiQuickSortCount) ")
 
 
