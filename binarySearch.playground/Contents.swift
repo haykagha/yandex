@@ -1,5 +1,5 @@
 import UIKit
-
+// binary search in sorted array
 var searchElementInThisArray = [1,2,3,4,5,6,7,8,9]
 
 func searchElement(array: [Int],element:Int)-> Int {
