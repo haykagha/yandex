@@ -43,7 +43,7 @@ searchElement(element: 5, node: Node(i: 0))
 //func that find min element
 func minElement(node: Node) -> String {
     if node.leftChild >= binarySearchTree.count {
-        return "min element is \(binarySearchTree[node.key])"
+        return "\(binarySearchTree[node.key])"
     } else {
         return minElement(node: Node(i: node.leftChild))
     }
@@ -61,3 +61,30 @@ func maxElement(node: Node) -> String {
 }
 
 maxElement(node: Node(i: 0))
+
+
+//func that find the next item
+
+func findNextItem(node: Node) -> String{
+    // if node has rightChild, then:
+    if node.rightChild < binarySearchTree.count {
+        return "next element is \(minElement(node: Node(i: node.rightChild)))"
+    }
+    // if node hasn't rightChild, then:
+    var x = node
+    var y = Node(i: x.parent)
+    while y.key < binarySearchTree.count && x.key == y.rightChild  {
+        x = y
+        y = Node(i: y.parent)
+    }
+    if y.key < binarySearchTree.count {
+        return ("next element is \(binarySearchTree[y.key])")
+    } else {
+        return ("next element doesn't exist")
+    }
+ }
+
+//if node has rightChild
+findNextItem(node: Node(i: 0))
+// if node hasn't rightChild:
+findNextItem(node: Node(i: 5))
