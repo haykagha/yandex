@@ -88,3 +88,21 @@ func findNextItem(node: Node) -> String{
 findNextItem(node: Node(i: 0))
 // if node hasn't rightChild:
 findNextItem(node: Node(i: 5))
+
+
+
+// this func adding new element in array and return his index
+func addNewElement(node: Node,addElement: Int) -> Int {
+    
+    if node.key >= binarySearchTree.count {
+        return node.key
+    }
+    if addElement < binarySearchTree[node.key] {
+        return addNewElement(node: Node(i: node.leftChild), addElement: addElement)
+    } else {
+        return addNewElement(node: Node(i: node.rightChild), addElement: addElement)
+    }
+}
+
+
+addNewElement(node: Node(i: 0), addElement: 5)
