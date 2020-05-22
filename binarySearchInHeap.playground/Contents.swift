@@ -1,6 +1,7 @@
 import UIKit
 // we want to find element in binary search tree
 var binarySearchTree: [Int] = [16,13,20,5,14,17,21]
+var arrayForChekingRemoveFunc: [Int?] = [12,3,20,1,7,15,nil,nil,nil,nil,nil,nil,17]
 var elementIndex: String = ""
 // node's struct in tree
 struct Node {
@@ -41,9 +42,9 @@ searchElement(element: 5, node: Node(i: 0))
 // we can find min and max elements in our array of numbers
 
 //func that find min element
-func minElement(node: Node) -> String {
+func minElement(node: Node) -> Int {
     if node.leftChild >= binarySearchTree.count {
-        return "\(binarySearchTree[node.key])"
+        return node.key
     } else {
         return minElement(node: Node(i: node.leftChild))
     }
@@ -51,7 +52,7 @@ func minElement(node: Node) -> String {
 
 minElement(node: Node(i: 0))
 
-//func that find max element
+//func that find max element index
 func maxElement(node: Node) -> String {
     if node.rightChild >= binarySearchTree.count {
         return "max element is \(binarySearchTree[node.key])"
@@ -63,12 +64,11 @@ func maxElement(node: Node) -> String {
 maxElement(node: Node(i: 0))
 
 
-//func that find the next item
-
-func findNextItem(node: Node) -> String{
+//func that find the next item index
+func findNextItem(node: Node) -> Int?{
     // if node has rightChild, then:
     if node.rightChild < binarySearchTree.count {
-        return "next element is \(minElement(node: Node(i: node.rightChild)))"
+        return minElement(node: Node(i: node.rightChild))
     }
     // if node hasn't rightChild, then:
     var x = node
@@ -78,11 +78,11 @@ func findNextItem(node: Node) -> String{
         y = Node(i: y.parent)
     }
     if y.key < binarySearchTree.count {
-        return ("next element is \(binarySearchTree[y.key])")
+        return y.key
     } else {
-        return ("next element doesn't exist")
+        return nil
     }
- }
+}
 
 //if node has rightChild
 findNextItem(node: Node(i: 0))
@@ -93,7 +93,6 @@ findNextItem(node: Node(i: 5))
 
 // this func adding new element in array and return his index
 func addNewElement(node: Node,addElement: Int) -> Int {
-    
     if node.key >= binarySearchTree.count {
         return node.key
     }
@@ -106,3 +105,57 @@ func addNewElement(node: Node,addElement: Int) -> Int {
 
 
 addNewElement(node: Node(i: 0), addElement: 5)
+
+
+// Remove element from binarySearch
+
+// this func remove node, that has only maximum one child
+func remove1(x: Node)-> [Int?] {
+    var bool: Bool = false
+    if arrayForChekingRemoveFunc[x.leftChild] == nil {
+        arrayForChekingRemoveFunc[x.key] =  arrayForChekingRemoveFunc[x.rightChild]
+    }
+    if arrayForChekingRemoveFunc[x.rightChild] == nil {
+           arrayForChekingRemoveFunc[x.key] =  arrayForChekingRemoveFunc[x.leftChild]
+            bool = true
+       }
+    if bool {
+        arrayForChekingRemoveFunc[x.leftChild] = nil
+    } else {
+        arrayForChekingRemoveFunc[x.rightChild] = nil
+    }
+    return arrayForChekingRemoveFunc
+}
+
+
+//remove1(x: Node(i: 3))
+
+
+// this func remove node, that has two children
+func remove2(x: Node)->[Int?] {
+    var nextNodeIndex: Int = findNextItem(node: x)!
+    arrayForChekingRemoveFunc[x.key] = arrayForChekingRemoveFunc[nextNodeIndex]
+    remove1(x: Node(i: nextNodeIndex))
+    return arrayForChekingRemoveFunc
+}
+
+//remove2(x: Node(i: 0))
+
+
+// this func remove element from binary search
+
+func remove(removeNode: Node, fromNode: Node) -> [Int?]  {
+    if arrayForChekingRemoveFunc[removeNode.key]! < arrayForChekingRemoveFunc[fromNode.key]! {
+        return remove(removeNode: Node(i: removeNode.key), fromNode: Node(i: fromNode.leftChild))
+    }
+    if arrayForChekingRemoveFunc[removeNode.key]! > arrayForChekingRemoveFunc[fromNode.key]! {
+        return remove(removeNode: Node(i: removeNode.key),fromNode: Node(i: fromNode.rightChild))
+    }
+    if removeNode.rightChild >= arrayForChekingRemoveFunc.count || removeNode.leftChild >= arrayForChekingRemoveFunc.count {
+        return remove1(x: removeNode)
+    } else {
+        return remove2(x: removeNode)
+    }
+}
+
+remove(removeNode: Node(i: 1),fromNode: Node(i: 0))
